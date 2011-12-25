@@ -19,8 +19,8 @@ module CsApi
         # select scope
         # @author Nozomu Kanechika
         # @from 0.0.1
-        scope :select_index   ,->(pms){ select(selects_from_params(pms,'INDEX').join(',')) }
-        scope :select_show    ,->(pms){ select(selects_from_params(pms,'SHOW').join(',')) }
+        scope :select_index   ,->(pms){ include?(Mongoid::Document) ? scoped : select(selects_from_params(pms,'INDEX').join(',')) }
+        scope :select_show    ,->(pms){ include?(Mongoid::Document) ? scoped : select(selects_from_params(pms,'SHOW').join(',')) }
 
         # includes scope
         # @author Nozomu Kanechika
