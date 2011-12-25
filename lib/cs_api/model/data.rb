@@ -25,8 +25,8 @@ module CsApi
         # includes scope
         # @author Nozomu Kanechika
         # @from 0.0.1
-        scope :includes_index ,->(pms){ includes(include?(Mongoid::Document) ? *includes_from_params(pms,'INDEX') : includes_from_params(pms,'INDEX')) }
-        scope :includes_show  ,->(pms){ includes(include?(Mongoid::Document) ? *includes_from_params(pms,'SHOW') : includes_from_params(pms,'SHOW')) }
+        scope :includes_index ,->(pms){ include?(Mongoid::Document) ? includes(*includes_from_params(pms,'INDEX')) : includes(includes_from_params(pms,'INDEX')) }
+        scope :includes_show  ,->(pms){ include?(Mongoid::Document) ? includes(*includes_from_params(pms,'SHOW')) : includes(includes_from_params(pms,'SHOW')) }
 
       end
 
