@@ -8,7 +8,7 @@ module CsApi
     module Required
       extend ActiveSupport::Concern
 
-      module ClassMethods
+      module InstanceMethods
 
         # cookie session が入っているかどうか
         # @author Nozomu Kanechika
