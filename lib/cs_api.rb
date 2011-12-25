@@ -25,6 +25,51 @@
 #      - controller/
 #        - required.rb # 認証系（cs_required、cs_role_required）
 #        - strut_wrapper.rb # strut をwrapping
+# 
+# 設定
+#
+# # ルーティング
+# $ vi config/routes.rb
+#
+#   resouces :MODELS ,only: [:index,:show,:create,:update,:destroy] do
+#     member do
+#       post :copy
+#     end
+#   end
+#
+#
+# # controller
+# $ vi app/controllers/application_controller.rb
+#
+#   include Strut::Controller
+#   include CsApi::Controller
+#
+# $ vi app/controllers/MODELS_controller.rb
+#
+#   class MODELSController < ApplicationController
+#     cs_api MODEL
+#
+#
+# # model
+# $ vi app/models/MODEL.rb
+#
+#   class MODEL
+#     include CookieSessionScope::Document
+#     cookie_session_scope 'user_info.sp'
+#
+# $ vi app/models/MODEL/scope.rb
+#
+#   class MODEL
+#     module Scope
+#       include CsApi::Model
+#       # index を取得するものを設定
+#       INDEX_SELECTS = %w(id me)
+#       INDEX_METHODS = %w()
+#       # show を取得するものを設定
+#       SHOW_SELECTS = %w(id me)
+#       SHOW_METHODS = %w()
+#       # copy 時にコピーするDBカラム
+#       COPYATTRIBUTES = %w(me)
 #
 # @author Nozomu Kanechika
 # @from 0.0.1

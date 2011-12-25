@@ -31,14 +31,14 @@ module CsApi
           # index action
           define_method :index do
             respond_index(instance_variable_get("@#{table_name}"),{
-              t_json: Proc.new{ render json: clazz.index_api(params) }
+              t_json: Proc.new{ render json: clazz.index_api(params,session) }
             })
           end
 
           # show action
           define_method :show do
             respond_show(instance_variable_get("@#{file_name}"),{
-              t_json: Proc.new{ render json: clazz.show_api(params) }
+              t_json: Proc.new{ render json: clazz.show_api(params,session) }
             })
           end
 

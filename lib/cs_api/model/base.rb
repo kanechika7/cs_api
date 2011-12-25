@@ -13,8 +13,10 @@ module CsApi
         # index action interface
         # @author Nozomu Kanechika
         # @from 0.0.1
-        def index_api pms
+        def index_api pms,session
           cs = scoped
+          cs = cs.cs_scope(session,pms) if include?(CookieSessionScope::Document)
+          cs = cs
                  .mongo_scope(pms)
                  .rails_scope(pms)
 
@@ -24,7 +26,7 @@ module CsApi
         # show action interface       
         # @author Nozomu Kanechika
         # @from 0.0.1
-        def show_api pms
+        def show_api pms,session
           c = where(id: pms[:id])
 
           return show_data(c,pms)
