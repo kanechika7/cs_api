@@ -10,6 +10,7 @@ require 'cs_api/model/scope' # スコープ定義
 
 module CsApi
   module Model
+    extend ActiveSupport::Concern
     include CsApi::Model::Base
     include CsApi::Model::Data
     include CsApi::Model::Scope

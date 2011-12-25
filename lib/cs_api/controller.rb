@@ -9,6 +9,7 @@ require 'cs_api/controller/strut_wrapper' # strutをwrapping
 
 module CsApi
   module Controller
+    extend ActiveSupport::Concern
     include CsApi::Controller::Required
     include CsApi::Controller::StrutWrapper
   end
