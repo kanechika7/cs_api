@@ -74,7 +74,11 @@
 # @author Nozomu Kanechika
 # @from 0.0.1
 module CsApi
+  # cookie session api
   require File.join(File.dirname(__FILE__), 'cs_api/model')
   require File.join(File.dirname(__FILE__), 'cs_api/controller')
+
+  # vendor
+  require File.join(File.dirname(__FILE__), 'cs_api/vendor/cookies_for_json.rb')
   class CsApi::Error < StandardError; end
 end

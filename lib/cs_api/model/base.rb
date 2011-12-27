@@ -17,8 +17,8 @@ module CsApi
           cs = scoped
           cs = cs.cs_scope(session,pms) if include?(CookieSessionScope::Document)
           cs = cs
-                 .mongo_scope(pms)
                  .rails_scope(pms)
+                 #.mongo_scope(pms)
 
           return index_data(cs,pms)
         end

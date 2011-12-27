@@ -28,3 +28,6 @@ CsApi::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+
+$COOKIE_STORE_KEY    = "_qs_api"
+$COOKIE_SECRET_TOKEN = "c4ed0207ff1a6ff6fb0a45a2c9442d6138fbdf20ba52c62b331e7a0348722076ec27d5cadfc367e3428a49b09e70b7dbc5255f6b33e5c7320187e96ce6a6dd23"
