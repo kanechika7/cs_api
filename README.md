@@ -19,6 +19,19 @@ Cookie Session を使ったAPI用に最適化したControllerを自動生成す�
     $COOKIE_SECRET_TOKEN = "c4ed0207ff1a6ff6fb0a45a2c9442d6138fbdf20ba52c62b331e7a0348722076ec27d5cadfc367e3428a49b09e70b7dbc5255f6b33e5c7320187e96ce6a6dd23"
     
 
+    
+    $ vi config/initializers/session_store.rb
+    
+    CsApi::Application.config.session_store :cookie_store, key: $COOKIE_STORE_KEY   
+    
+
+    $ vi config/initializers/secret_token.rb   
+
+    CsApi::Application.config.secret_token = $COOKIE_SECRET_TOKEN
+    
+
+    
+
 ## ① ルーティング設定
 
     $ vi config/routes.rb

@@ -43,7 +43,7 @@ module CsApi
         # @author Nozomu Kanechika
         # @from 0.0.1
         def selects_from_params pms,aktion='INDEX'
-          pms[:selects].blank? ? eval("#{self.to_s}::Scope::#{aktion}_SELECTS") : ((eval("#{self.to_s}::Scope::#{aktion}_SELECTS") + pms[:selects].split(',').map{|s| s.to_sym }).uniq)
+          pms[:selects].blank? ? eval("#{self.to_s}::#{aktion}_SELECTS") : ((eval("#{self.to_s}::#{aktion}_SELECTS") + pms[:selects].split(',').map{|s| s.to_sym }).uniq)
         end
 
         # パラメータ -> includes パーサー
@@ -94,7 +94,7 @@ module CsApi
         # @author Nozomu Kanechika
         # @from 0.0.1
         def to_one_data c,pms,ins,aktion
-          h = Hash[*((selects_from_params(pms,aktion))+eval("#{self.to_s}::Scope::#{aktion}_METHODS")).map{|f| [f,c.send(f)] }.flatten]
+          h = Hash[*((selects_from_params(pms,aktion))+eval("#{self.to_s}::#{aktion}_METHODS")).map{|f| [f,c.send(f)] }.flatten]
           ins.each do |t|
             if t.is_a? Hash
               t.each_pair do |k,vs|

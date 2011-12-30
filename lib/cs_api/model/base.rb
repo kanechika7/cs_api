@@ -40,7 +40,7 @@ module CsApi
         # @author Nozomu Kanechika
         # @from 0.0.1
         def copy_attributes
-          eval("#{self.class.to_s}::Scope::COPYATTRIBUTES").inject({}) do |attrs,name|
+          eval("#{self.class.to_s}::COPYATTRIBUTES").inject({}) do |attrs,name|
             attrs[name] = read_attribute(name)
             attrs
           end
